@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <style>
+   ;
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transform: scale(1.18);
+    transform-origin: top left;
+}
+
+
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        .heading {
+            margin: 0;
+            font-size: 24px;
+            text-align: left;
+        }
+
+        .section {
+            padding: 100px 20px;
+            margin-top: 60px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .section h2 {
+            margin-top: 0;
+        }
+
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Background color for the Academics section */
+        #academics {
+            background-color: #fff;
+            position: relative;
+            height: 100px; /* Adjust height to fit content */
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .academic-content {
+            position: absolute;
+            width: 100%;
+            max-width: 800px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 1s ease-in-out;
+            white-space: nowrap;
+        }
+
+        .academic-content img {
+            width: 40px;
+            height: auto;
+            margin-left: 10px;
+        }
+
+        .school, .college {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        /* Example to prevent horizontal overflow */
+        html, body {
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="heading">About Me</h1>
+    </header>
+    <section class="section fade" id="academics">
+        <div class="academic-content school">
+            <div>
+                <h2>Academics</h2>
+                <p>High School & Intermediate</p>
+            </div>
+        </div>
+        <div class="academic-content college" style="transform: translateX(100%);">
+            <div>
+                <h2>College</h2>
+                <p>Currently pursuing a degree at Graphic Era Hill University with a CGPA of 7.3.</p>
+                <img src="https://upload.wikimedia.org/wikipedia/en/5/5a/Graphic_Era_Hill_University_logo.png" alt="Graphic Era Hill University Logo">
+            </div>
+        </div>
+    </section>
+    <section class="section fade" id="projects">
+        <h2>Projects</h2>
+        <p>Details about your projects.</p>
+    </section>
+    <section class="section fade" id="hobbies">
+        <h2>Hobbies</h2>
+        <p>Details about your hobbies.</p>
+    </section>
+    <section class="section fade" id="skills">
+        <h2>Skills</h2>
+        <p>Details about your skills.</p>
+    </section>
+    <script>
+        // Intersection Observer to handle the fade-in effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section');
+
+            const options = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    } else {
+                        entry.target.classList.remove('fade-in');
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+    const school = document.querySelector('.academic-content.school');
+    const college = document.querySelector('.academic-content.college');
+    const gap = 20; // Adjust the gap value as needed
+
+    let showingSchool = true;
+
+    setInterval(() => {
+        if (showingSchool) {
+            school.style.transform = `translateX(calc(-100% - ${gap}px))`;
+            college.style.transform = 'translateX(0)';
+        } else {
+            school.style.transform = 'translateX(0)';
+            college.style.transform = `translateX(calc(100% + ${gap}px))`;
+        }
+        showingSchool = !showingSchool;
+    }, 4000);
+});
+
+    </script>
+</body>
+</html>
