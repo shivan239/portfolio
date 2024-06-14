@@ -3,276 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shivansh's Portfolio</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>About Me</title>
     <style>
         body {
-            background-color: #f4f4f4;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
-        .navbar {
-            background-color: #333;
-        }
-        .navbar-brand, .navbar-nav .nav-link {
-            color: #fff;
-        }
-        .header {
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 100px 0;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-        .header-content {
-            display: flex;
-            align-items: center;
-        }
-        .header h1 {
-            font-size: 3rem;
-            margin: 20px;
-        }
-        .header img {
-            border-radius: 50%;
-            border: 5px solid #fff;
-            width: 150px;
-            height: 150px;
-            margin: 20px;
-        }
-        .content-section {
-            padding: 60px 0;
-        }
-        .content-section h2 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .project-item {
-            margin-bottom: 30px;
-        }
-        .footer {
-            background-color: #333;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
-        .modal-content {
-            background-color: #fff;
-        }
-        .popover {
-            max-width: 200px;
-            background-color: #fff;
-            color: #333;
-        }
-        .popover-header {
-            background-color: #333;
-            color: #fff;
-            border-bottom: none;
-        }
-        .popover-body {
-            padding: 10px;
-        }
-        @keyframes spin {
-            from { transform: rotateY(0deg); }
-            to { transform: rotateY(360deg); }
-        }
-        .spin-enter {
-            animation: spin 0.5s forwards;
-        }
-        .spin-exit {
-            animation: spin 0.5s reverse forwards;
-        }
-        .skills-popup {
+
+        header {
             position: fixed;
-            top: 50%;
-            right: -300px;
-            transform: translateY(-50%);
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: right 0.5s;
-            z-index: 999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 10;
         }
-        .skills-popup.show {
-            right: 20px;
+
+        .heading {
+            margin: 0;
+            font-size: 24px;
+            text-align: left;
+        }
+
+        .section {
+            padding: 100px 20px;
+            margin-top: 60px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .section h2 {
+            margin-top: 0;
+        }
+
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #academics {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            width: 200%; /* Adjust based on number of slides */
+            transition: transform 1s ease-in-out;
+        }
+
+        .slide {
+            flex: 1 0 50%; /* Adjust based on number of slides */
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .slide img {
+            width: 60px;
+            height: auto;
+            margin-top: 10px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .slide img {
+                width: 40px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="#">Shivansh</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#contactModal">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Header Section -->
-    <header class="header">
-        <div class="header-content">
-            <h1>Shivansh</h1>
-            <img src="profile.jpg" alt="Profile Picture">
-        </div>
-        <p>Proficient in Python and Java | Machine Learning Enthusiast</p>
+    <header>
+        <h1 class="heading">About Me</h1>
     </header>
-
-    <!-- About Section -->
-    <section id="about" class="content-section bg-light">
-        <div class="container">
-            <h2>About Me</h2>
-            <p>Hi, I'm Shivansh, a skilled programmer proficient in Python and Java, with a strong background in developing software solutions. I have experience working on projects such as a movie recommendation system based on content-based filtering, a book recommendation system based on collaborative filtering, a chatbot using Dialogflow and natural language processing (NLP), and a blog generation project based on large language models (LLMs). I am not only adept at programming but also possess valuable soft skills, including being a team player. My interests lie in machine learning, AI, and robotics, making me a well-rounded and valuable member of any team.</p>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="content-section">
-        <div class="container">
-            <h2>Projects</h2>
-            <div class="row">
-                <div class="col-md-4 project-item">
-                    <h3>Movie Recommendation System</h3>
-                    <p>Content-Based Filtering</p>
-                </div>
-                <div class="col-md-4 project-item">
-                    <h3>Book Recommendation System</h3>
-                    <p>Collaborative Filtering</p>
-                </div>
-                <div class="col-md-4 project-item">
-                    <h3>Chatbot</h3>
-                    <p>Using Dialogflow and NLP</p>
-                </div>
-                <div class="col-md-4 project-item">
-                    <h3>Blog Generation Project</h3>
-                    <p>Based on Large Language Models (LLMs)</p>
-                </div>
+    <section class="section fade" id="academics">
+        <div class="slider">
+            <div class="slide">
+                <h2>High School & Intermediate</h2>
+                <p>Shri Goverdhan Saraswati Vidya Mandir Inter College (Hindi Medium)</p>
+                <p>Completed with 66% in Intermediate and 67% in High School</p>
+                <p>Responsibilities: Discipline Committee Head, Captain of Kabaddi Team</p>
+            </div>
+            <div class="slide">
+                <h2>College</h2>
+                <p>Currently pursuing a degree at Graphic Era Hill University</p>
+                <p>CGPA: 7.3</p>
+                <img src="https://upload.wikimedia.org/wikipedia/en/5/5a/Graphic_Era_Hill_University_logo.png" alt="Graphic Era Hill University Logo">
             </div>
         </div>
     </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="content-section bg-light" style="display: none;">
-        <div class="container">
-            <h2>Skills</h2>
-            <ul>
-                <li><img src="path/to/html.png" alt="HTML"> HTML</li>
-                <li><img src="path/to/css.png" alt="CSS"> CSS</li>
-                <li><img src="path/to/javascript.png" alt="JavaScript"> JavaScript</li>
-                <li><img src="path/to/python.png" alt="Python"> Python</li>
-                <li><img src="path/to/java.png" alt="Java"> Java</li>
-                <li><img src="path/to/docker.png" alt="Docker"> Docker</li>
-                <!-- Add more skills here -->
-            </ul>
-        </div>
+    <section class="section fade" id="projects">
+        <h2>Projects</h2>
+        <p>Details about your projects.</p>
     </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="content-section bg-light">
-        <div class="container">
-            <h2>Contact</h2>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Contact Me</button>
-        </div>
+    <section class="section fade" id="hobbies">
+        <h2>Hobbies</h2>
+        <p>Details about your hobbies.</p>
     </section>
+    <section class="section fade" id="skills">
+        <h2>Skills</h2>
+        <p>Details about your skills.</p>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section');
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2023 Shivansh</p>
-        </div>
-    </footer>
+            const options = {
+                threshold: 0.1
+            };
 
-    <!-- Contact Modal 
-    <div class="modal fade" id="contactModal" tabindex="-1" role="
-    <div class= "modal-dialogz" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Contact Me</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter your name">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea class="form-control" id="message" rows="3" placeholder="Enter your message"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send Message</button>
-            </div>
-        </div>
-    </div>
-</div>-->
-    <!-- Contact Modal -->
-    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="contactModalLabel">Contact Me</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Email: shivanshofficial121.com</p>
-                    <p>GitHub: <a href="https://github.com/yourgithubusername">GitHub</a></p>
-                    <p>LinkedIn: <a href="https://linkedin.com/in/yourlinkedinusername">LinkedIn</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    } else {
+                        entry.target.classList.remove('fade-in');
+                    }
+                });
+            }, options);
 
-<!-- Skills Popup -->
-<div id="skillsPopup" class="skills-popup">
-    <h4>Skills</h4>
-    <ul>
-        <li>Python</li>
-        <li>Java</li>
-        <li>Machine Learning</li>
-        <li>Docker</li>
-        <li>SQL</li>
-        <li>Django</li>
-        <li>Full Stack</li>
-    </ul>
-</div>
+            sections.forEach(section => {
+                observer.observe(section);
+            });
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script>
-    $(document).ready(function() {
-        var skillsPopup = $('#skillsPopup');
+            const slider = document.querySelector('.slider');
+            let currentIndex = 0;
 
-        $(window).scroll(function() {
-            if ($(this).scrollTop() >= $('#about').offset().top - 100) {
-                skillsPopup.addClass('show');
-                setTimeout(function() {
-                    skillsPopup.removeClass('show');
-                }, 5000);
-            }
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % 2; // Adjust based on number of slides
+                slider.style.transform = `translateX(-${currentIndex * 50}%)`; // Adjust based on number of slides
+            }, 4000);
         });
-    });
-</script>
+    </script>
 </body>
 </html>
-
-
