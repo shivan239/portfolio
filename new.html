@@ -41,6 +41,11 @@
             margin-top: 0;
         }
 
+        /* Reduce the margin between sections */
+        .section + .section {
+            margin-top: 20px;
+        }
+
         /* Fade-in animation */
         .fade-in {
             opacity: 1;
@@ -50,7 +55,7 @@
         #academics {
             position: relative;
             width: 100%;
-            height: 300px;
+            height: auto;
             background-color: #f0f0f0;
             overflow: hidden;
         }
@@ -74,9 +79,34 @@
             margin-top: 10px;
         }
 
+        #hobbies {
+            background-color: #f9f9f9; /* Different shade of white */
+        }
+
         @media only screen and (max-width: 600px) {
             .slide img {
                 width: 40px;
+            }
+            .section {
+                padding: 80px 10px;
+            }
+            .heading {
+                font-size: 20px;
+            }
+            .slide {
+                flex: 1 0 100%;
+            }
+            .slider {
+                width: 100%;
+            }
+        }
+
+        @media only screen and (max-width: 400px) {
+            .heading {
+                font-size: 18px;
+            }
+            .slide img {
+                width: 30px;
             }
         }
     </style>
@@ -107,7 +137,18 @@
     </section>
     <section class="section fade" id="hobbies">
         <h2>Hobbies</h2>
-        <p>Details about your hobbies.</p>
+        <div>
+            <h3>F1 Racing</h3>
+            <p>I am an avid fan of Formula 1 racing. The thrill of high-speed chases, the precision of each turn, and the strategy behind every race captivate me. I follow the latest races, keep up with my favorite drivers, and enjoy analyzing the intricate details that make each race unique.</p>
+        </div>
+        <div>
+            <h3>Playing Kabaddi</h3>
+            <p>Kabaddi has been a passion of mine since school. As the captain of my school’s Kabaddi team and the head of the Discipline Committee, I developed a strong sense of teamwork, strategy, and physical fitness. The sport has taught me resilience, quick thinking, and the importance of staying calm under pressure.</p>
+        </div>
+        <div>
+            <h3>Listening to Music</h3>
+            <p>I enjoy listening to music in my free time. Music helps me relax and unwind, and it often inspires me. I appreciate various genres and enjoy discovering new artists and songs. Whether I'm studying, working on a project, or just relaxing, music is a constant companion.</p>
+        </div>
     </section>
     <section class="section fade" id="skills">
         <h2>Skills</h2>
@@ -146,3 +187,7 @@
     </script>
 </body>
 </html>
+
+
+
+
