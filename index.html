@@ -50,6 +50,7 @@
         }
         .project-item {
             margin-bottom: 30px;
+            cursor: pointer;
         }
         .footer {
             background-color: #333;
@@ -98,10 +99,7 @@
         .skills-popup.show {
             right: 20px;
         }
-    
-   
-
-    </style>
+    </style>    python
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -112,7 +110,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="#">About Me </a></li>
+                <li class="nav-item"><a class="nav-link" href="#">About Me</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Projects</a></li>
                 <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#contactModal">Contact</a></li>
             </ul>
@@ -122,7 +120,7 @@
     <!-- Header Section -->
     <header class="header">
         <div class="header-content">
-            <h1 style="margin-left: 25px;" >    Shivansh</h1>
+            <h1 style="margin-left: 25px;">Shivansh</h1>
             <img src="profile.jpg" alt="Profile Picture">
         </div>
         <p>Proficient in Python and Java | Machine Learning Enthusiast</p>
@@ -141,19 +139,19 @@
         <div class="container">
             <h2>Projects</h2>
             <div class="row">
-                <div class="col-md-4 project-item">
+                <div class="col-md-4 project-item" data-toggle="modal" data-target="#movieRecommendationModal">
                     <h3>Movie Recommendation System</h3>
                     <p>Content-Based Filtering</p>
                 </div>
-                <div class="col-md-4 project-item">
+                <div class="col-md-4 project-item" data-toggle="modal" data-target="#bookRecommendationModal">
                     <h3>Book Recommendation System</h3>
                     <p>Collaborative Filtering</p>
                 </div>
-                <div class="col-md-4 project-item">
+                <div class="col-md-4 project-item" data-toggle="modal" data-target="#chatbotModal">
                     <h3>Chatbot</h3>
                     <p>Using Dialogflow and NLP</p>
                 </div>
-                <div class="col-md-4 project-item">
+                <div class="col-md-4 project-item" data-toggle="modal" data-target="#blogGenerationModal">
                     <h3>Blog Generation Project</h3>
                     <p>Based on Large Language Models (LLMs)</p>
                 </div>
@@ -161,8 +159,232 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="content-section bg-light" style="display: none;">
+    <!-- Modals for Project Details -->
+    <!-- Movie Recommendation System Modal -->
+    <div class="modal fade" id="movieRecommendationModal" tabindex="-1" role="dialog" aria-labelledby="movieRecommendationModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="movieRecommendationModalLabel">Movie Recommendation System</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Details about the Movie Recommendation System project...</p>
+                    <p> <div class="content-section">
+                        <h2>Project Overview</h2>
+                        <p>The Movie Recommendation System is a sophisticated software application designed to provide personalized movie recommendations to users based on their individual preferences. This project employs content-based filtering techniques to analyze the characteristics of movies that users have previously enjoyed and recommends similar movies accordingly. The primary goal of this system is to enhance user experience by suggesting movies that align with their tastes, thereby increasing user engagement and satisfaction.</p>
+                        
+                        <h2>Key Features</h2>
+                        <ul>
+                            <li><strong>User Profile Creation:</strong> Users can create profiles by providing information about their favorite genres, directors, actors, and movies. The system stores user preferences to tailor future recommendations.</li>
+                            <li><strong>Content-Based Filtering:</strong> Utilizes metadata such as genre, director, cast, and plot keywords to find similarities between movies. Recommends movies with similar attributes to those that users have liked in the past.</li>
+                            <li><strong>Movie Database:</strong> A comprehensive dataset containing detailed information about a vast collection of movies. Includes movie titles, genres, directors, cast members, release dates, and plot summaries.</li>
+                            <li><strong>Recommendation Algorithm:</strong> Employs cosine similarity to measure the similarity between movies. Generates a list of recommended movies based on the highest similarity scores.</li>
+                            <li><strong>User Interface:</strong> A user-friendly interface where users can rate movies they have watched. Displays personalized recommendations dynamically as user preferences are updated.</li>
+                        </ul>
+                        
+                        <h2>Technologies Used</h2>
+                        <ul>
+                            <li><strong>Python:</strong> The core programming language used to develop the recommendation algorithm and handle data processing.</li>
+                            <li><strong>Pandas:</strong> A powerful data manipulation library used to manage and preprocess the movie dataset.</li>
+                            <li><strong>Scikit-Learn:</strong> A machine learning library used for implementing the cosine similarity algorithm.</li>
+                            <li><strong>Flask:</strong> A lightweight web framework used to create the backend server and API endpoints.</li>
+                            <li><strong>HTML/CSS/JavaScript:</strong> Frontend technologies used to build the user interface.</li>
+                        </ul>
+                        
+                        <h2>Implementation Details</h2>
+                        <ul>
+                            <li><strong>Data Collection and Preprocessing:</strong> Collected movie data from reliable sources like IMDb and The Movie Database (TMDb). Preprocessed the data to extract relevant features such as genres, directors, and plot keywords. Created a vector representation of movies using these features.</li>
+                            <li><strong>Similarity Calculation:</strong> Employed cosine similarity to compute the similarity between movies based on their vector representations. The cosine similarity score ranges from -1 to 1, where 1 indicates identical movies and -1 indicates completely dissimilar movies.</li>
+                            <li><strong>Recommendation Generation:</strong> For a given user profile, identified movies with the highest similarity scores to the user's preferred movies. Generated a ranked list of recommended movies and displayed it to the user.</li>
+                            <li><strong>User Feedback and Iteration:</strong> Allowed users to rate recommended movies to refine the recommendation model. Continuously updated user profiles and movie vectors based on user feedback.</li>
+                        </ul>
+                        
+                        <h2>Challenges and Solutions</h2>
+                        <ul>
+                            <li><strong>Data Sparsity:</strong> Addressed the issue of data sparsity by incorporating additional features such as user ratings and movie reviews to enrich the dataset.</li>
+                            <li><strong>Cold Start Problem:</strong> Mitigated the cold start problem (new users with no history) by providing generic recommendations based on popular and highly-rated movies.</li>
+                            <li><strong>Scalability:</strong> Ensured the system's scalability by optimizing the similarity computation and utilizing efficient data structures.</li>
+                        </ul>
+                        
+                        <h2>Conclusion</h2>
+                        <p>The Movie Recommendation System successfully demonstrates the power of content-based filtering in providing personalized movie suggestions. By leveraging machine learning techniques and user feedback, the system continuously improves its recommendations, delivering a tailored and enjoyable movie-watching experience for users. This project not only showcases technical proficiency but also highlights the importance of enhancing user engagement through intelligent recommendations.</p>
+                    </div></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Book Recommendation System Modal -->
+    <div class="modal fade" id="bookRecommendationModal" tabindex="-1" role="dialog" aria-labelledby="bookRecommendationModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bookRecommendationModalLabel">Book Recommendation System</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Details about the Book Recommendation System project...</p>
+                    <p><div class="content-section">
+                        <h2>Project Overview</h2>
+                        <p>The Book Recommendation System is designed to provide personalized book recommendations to users based on collaborative filtering techniques. This system analyzes user interactions, such as book ratings and reviews, to identify similar users and recommend books that align with their preferences. The goal is to enhance the user reading experience by suggesting books they are likely to enjoy.</p>
+                        
+                        <h2>Key Features</h2>
+                        <ul>
+                            <li><strong>User Profile Creation:</strong> Users can create profiles and rate books they have read. The system uses these ratings to understand user preferences.</li>
+                            <li><strong>Collaborative Filtering:</strong> Utilizes user ratings to find similarities between users. Recommends books liked by similar users.</li>
+                            <li><strong>Book Database:</strong> Contains detailed information about various books, including titles, authors, genres, and ratings.</li>
+                            <li><strong>Recommendation Algorithm:</strong> Employs user-based collaborative filtering to generate book recommendations based on user similarities.</li>
+                            <li><strong>User Interface:</strong> A user-friendly interface where users can browse and rate books. Displays personalized recommendations dynamically as user preferences are updated.</li>
+                        </ul>
+                        
+                        <h2>Technologies Used</h2>
+                        <ul>
+                            <li><strong>Python:</strong> The core programming language used for developing the recommendation algorithm and handling data processing.</li>
+                            <li><strong>Pandas:</strong> A powerful data manipulation library used to manage and preprocess the book dataset.</li>
+                            <li><strong>Scikit-Learn:</strong> A machine learning library used for implementing the collaborative filtering algorithm.</li>
+                            <li><strong>Flask:</strong> A lightweight web framework used to create the backend server and API endpoints.</li>
+                            <li><strong>HTML/CSS/JavaScript:</strong> Frontend technologies used to build the user interface.</li>
+                        </ul>
+                        
+                        <h2>Implementation Details</h2>
+                        <ul>
+                            <li><strong>Data Collection and Preprocessing:</strong> Collected book data from reliable sources like Goodreads. Preprocessed the data to extract relevant features such as book titles, authors, and genres. Created a matrix representation of users and their book ratings.</li>
+                            <li><strong>Similarity Calculation:</strong> Employed cosine similarity to compute the similarity between users based on their book ratings. The cosine similarity score ranges from -1 to 1, where 1 indicates identical users and -1 indicates completely dissimilar users.</li>
+                            <li><strong>Recommendation Generation:</strong> For a given user, identified similar users with the highest similarity scores. Recommended books that similar users have liked but the given user has not read yet.</li>
+                            <li><strong>User Feedback and Iteration:</strong> Allowed users to rate recommended books to refine the recommendation model. Continuously updated user profiles and similarity scores based on user feedback.</li>
+                        </ul>
+                        
+                        <h2>Challenges and Solutions</h2>
+                        <ul>
+                            <li><strong>Data Sparsity:</strong> Addressed the issue of data sparsity by incorporating additional features such as book reviews and author popularity to enrich the dataset.</li>
+                            <li><strong>Cold Start Problem:</strong> Mitigated the cold start problem (new users with no history) by providing generic recommendations based on popular and highly-rated books.</li>
+                            <li><strong>Scalability:</strong> Ensured the system's scalability by optimizing the similarity computation and utilizing efficient data structures.</li>
+                        </ul>
+                        
+                        <h2>Conclusion</h2>
+                        <p>The Book Recommendation System successfully demonstrates the power of collaborative filtering in providing personalized book suggestions. By leveraging user ratings and feedback, the system continuously improves its recommendations, delivering a tailored and enjoyable reading experience for users. This project showcases technical proficiency and highlights the importance of enhancing user engagement through intelligent recommendations.</p>
+                    </div></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot Modal -->
+    <div class="modal fade" id="chatbotModal" tabindex="-1" role="dialog" aria-labelledby="chatbotModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="chatbotModalLabel">Chatbot</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Details about the Chatbot project...</p>
+                    <p><div class="container">
+                        <div class="content">
+                            <h2>Project Overview</h2>
+                            <p>
+                                This project involves the development of a chatbot using Dialogflow, integrated with a Flask backend and exposed through ngrok. The chatbot is designed to handle user queries and provide responses based on predefined intents and entities.
+                            </p>
+                            <h2>Technologies Used</h2>
+                            <ul>
+                                <li><strong>Dialogflow:</strong> A natural language understanding platform used to create conversational interfaces.</li>
+                                <li><strong>Flask:</strong> A lightweight web framework for Python used to build the backend of the chatbot.</li>
+                                <li><strong>ngrok:</strong> A tool that exposes local servers to the internet, allowing the chatbot to be tested and accessed externally.</li>
+                            </ul>
+                            <h2>Features</h2>
+                            <ul>
+                                <li>Interactive chatbot capable of understanding and responding to user inputs.</li>
+                                <li>Integration with Dialogflow for natural language processing and intent recognition.</li>
+                                <li>Backend support through Flask to manage and process requests.</li>
+                                <li>Access and testing of the chatbot through ngrok's tunneling service.</li>
+                            </ul>
+                            <h2>Installation and Setup</h2>
+                            <p>
+                                To set up the project, follow these steps:
+                            </p>
+                            <ol>
+                                <li>Clone the repository from GitHub.</li>
+                                <li>Install the required dependencies using <code>pip install -r requirements.txt</code>.</li>
+                                <li>Configure Dialogflow with the appropriate intents and entities.</li>
+                                <li>Run the Flask server locally and expose it using ngrok.</li>
+                                <li>Test the chatbot via the ngrok URL.</li>
+                            </ol>
+                            <h2>Conclusion</h2>
+                            <p>
+                                This project demonstrates the integration of Dialogflow with a Flask backend to create a functional and interactive chatbot. The use of ngrok allows for easy testing and access to the chatbot from anywhere.
+                            </p>
+                        </div>
+                    </div>
+                </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Generation Project Modal -->
+    <div class="modal fade" id="blogGenerationModal" tabindex="-1" role="dialog" aria-labelledby="blogGenerationModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="blogGenerationModalLabel">Blog Generation Project</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Details about the Blog Generation Project...</p>
+                    <p>     <div class="container">
+                        <div class="content">
+                            <h2>Project Overview</h2>
+                            <p>
+                                This project involves developing a blog generation system using Streamlit. The system leverages large language models (LLMs) to automatically generate blog posts based on input topics. Streamlit is used to create an interactive web interface that allows users to easily generate and view blog content.
+                            </p>
+                            <h2>Technologies Used</h2>
+                            <ul>
+                                <li><strong>Streamlit:</strong> An open-source framework for creating web applications with Python, used for building the user interface.</li>
+                                <li><strong>Large Language Models (LLMs):</strong> Employed to generate human-like text based on user-provided topics.</li>
+                                <li><strong>Python:</strong> The programming language used for the backend logic and integration with LLMs.</li>
+                                <li><strong>HTML/CSS:</strong> Used for styling the web application interface, if needed.</li>
+                            </ul>
+                            <h2>Features</h2>
+                            <ul>
+                                <li>User-friendly interface for generating blog posts with simple input fields.</li>
+                                <li>Customizable options for generating blog content based on topics, length, and style.</li>
+                                <li>Real-time feedback and preview of generated blog posts.</li>
+                                <li>Easy deployment and sharing through Streamlit’s built-in features.</li>
+                            </ul>
+                            <h2>Installation and Setup</h2>
+                            <p>
+                                To set up and run the project, follow these steps:
+                            </p>
+                            <ol>
+                                <li>Clone the repository from GitHub.</li>
+                                <li>Install the required dependencies using <code>pip install -r requirements.txt</code>.</li>
+                                <li>Ensure you have Streamlit installed. If not, install it using <code>pip install streamlit</code>.</li>
+                                <li>Run the Streamlit application using <code>streamlit run app.py</code>.</li>
+                                <li>Open the provided URL in your browser to start using the blog generation tool.</li>
+                            </ol>
+                            <h2>Conclusion</h2>
+                            <p>
+                                This blog generation project demonstrates the power of combining Streamlit with large language models to create a powerful tool for automatic content creation. The intuitive Streamlit interface makes it easy for users to generate high-quality blog posts with minimal effort.
+                            </p>
+                        </div>
+                    </div></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+     <!-- Skills Section -->
+     <section id="skills" class="content-section bg-light" style="display: none;">
         <div class="container">
             <h2>Skills</h2>
             <ul>
@@ -186,46 +408,12 @@
         </div>
     </section>
 
-    <!-- Footer -->
+
+    <!-- Footer Section -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Shivansh</p>
-        </div>
+        <p>&copy; 2024 Shivansh. All rights reserved.</p>
     </footer>
 
-    <!-- Contact Modal 
-    <div class="modal fade" id="contactModal" tabindex="-1" role="
-    <div class= "modal-dialogz" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Contact Me</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter your name">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea class="form-control" id="message" rows="3" placeholder="Enter your message"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send Message</button>
-            </div>
-        </div>
-    </div>
-</div>-->
     <!-- Contact Modal -->
     <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -237,15 +425,27 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Email:  <a href="mailto:shivanshofficial121@gmail.com">shivanshofficial121@gmail.com</a></p>
-                    <p>GitHub: <a href="https://github.com/yourgithubusername">GitHub</a></p>
-                    <p>LinkedIn: <a href="https://linkedin.com/in/yourlinkedinusername">LinkedIn</a></p>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="message" rows="3" placeholder="Enter your message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
-<!-- Skills Popup -->
+    <!-- Skills Popup -->
 <div id="skillsPopup" class="skills-popup">
     <h4>Skills</h4>
     <ul>
@@ -259,24 +459,34 @@
     </ul>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script>
-    $(document).ready(function() {
-        var skillsPopup = $('#skillsPopup');
+    <!-- Bootstrap and jQuery scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        $(window).scroll(function() {
-            if ($(this).scrollTop() >= $('#about').offset().top - 100) {
-                skillsPopup.addClass('show');
-                setTimeout(function() {
-                    skillsPopup.removeClass('show');
-                }, 5000);
-            }
+    <script>
+        $(document).ready(function () {
+            // Show skills popup on scroll to About section
+            $(window).scroll(function () {
+                var aboutSection = $('#about').offset().top;
+                if ($(window).scrollTop() >= aboutSection - $(window).height() / 2) {
+                    $('.skills-popup').addClass('show');
+                    setTimeout(function () {
+                        $('.skills-popup').removeClass('show');
+                    }, 5000); // Hold for 5 seconds
+                }
+            });
+
+            // Spin transition for project items
+            $('.project-item').on('click', function () {
+                $(this).toggleClass('spin-enter spin-exit');
+            });
         });
-    });
-</script>
+    </script>
+
 </body>
 </html>
+
+
 
 
