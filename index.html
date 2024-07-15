@@ -102,7 +102,7 @@
     </style>    
 </head>
 <body>
-    <!-- Navigation Bar -->
+    <!-- Navigation Bar--> 
     <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="#">Shivansh</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -110,8 +110,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="#">About Me</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                 <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#contactModal">Contact</a></li>
             </ul>
         </div>
@@ -153,6 +153,10 @@
                 </div>
                 <div class="col-md-4 project-item" data-toggle="modal" data-target="#blogGenerationModal">
                     <h3>Blog Generation Project</h3>
+                    <p>Based on Large Language Models (LLMs)</p>
+                </div>
+               <div class="col-md-4 project-item" data-toggle="modal" data-target="#SQLQUERYGenerationModal">
+                    <h3>SQL QUERy Generation Project</h3>
                     <p>Based on Large Language Models (LLMs)</p>
                 </div>
             </div>
@@ -383,6 +387,180 @@
     </div>
 
 
+    <!-- SQL QUery-->
+
+    <div class="modal fade" id="SQLQUERYGenerationModal" tabindex="-1" role="dialog" aria-labelledby="SQLQUERYGenerationModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="SQLQUERYGenerationModal">SQL GENERATION MODAL</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <header>
+                        <div class="container">
+                            <h1>Natural Language to SQL Query Converter</h1>
+                        </div>
+                    </header>
+                
+                    <div class="container content">
+                        <h2>Overview</h2>
+                        <p>Welcome to the Natural Language to SQL Query Converter project! This tool allows users to input questions in natural language and get corresponding SQL queries to retrieve data from a database. It's designed to bridge the gap between technical and non-technical users, making database interactions more intuitive and accessible.</p>
+                
+                        <h2>Problem Statement</h2>
+                        <p>Many users, especially non-technical ones, find it challenging to write SQL queries. They often need to retrieve data from databases but lack the necessary SQL skills. This project addresses this problem by providing a tool that converts natural language questions into SQL queries, simplifying the data retrieval process.</p>
+                
+                        <h2>Solution</h2>
+                        <p>The solution involves three main components:</p>
+                        <ul>
+                            <li><strong>Google Gemini:</strong> Used for converting natural language to SQL queries.</li>
+                            <li><strong>Streamlit:</strong> Used to build an interactive web application.</li>
+                            <li><strong>SQLite:</strong> Used as the database for executing SQL queries.</li>
+                        </ul>
+                        <p>This combination creates a seamless experience for users to query databases using plain English.</p>
+                
+                        <h2>Technology Stack</h2>
+                        <ul>
+                            <li><strong>Google Gemini:</strong> An advanced natural language processing model for understanding and generating SQL queries.</li>
+                            <li><strong>Streamlit:</strong> A Python library for creating interactive web applications.</li>
+                            <li><strong>SQLite:</strong> A lightweight, disk-based database.</li>
+                            <li><strong>Python:</strong> The programming language used to integrate all components.</li>
+                        </ul>
+                
+                        <h2>System Architecture</h2>
+                        <p><img src="link-to-architecture-diagram" alt="System Architecture"></p>
+                        <p>The system consists of:</p>
+                        <ul>
+                            <li><strong>User Interface (Streamlit):</strong> Allows users to input their questions in natural language.</li>
+                            <li><strong>NLP Model (Google Gemini):</strong> Processes the input and generates the corresponding SQL query.</li>
+                            <li><strong>Database (SQLite):</strong> Executes the generated SQL query and retrieves the data.</li>
+                        </ul>
+                
+                        <h2>Implementation Details</h2>
+                        <h3>Environment Setup</h3>
+                        <p><strong>Load Environment Variables:</strong></p>
+                        <pre>
+                            <code>from dotenv import load_dotenv
+                load_dotenv()</code>
+                        </pre>
+                        <p><strong>Install Required Libraries:</strong></p>
+                        <pre>
+                            <code>pip install streamlit sqlite3 python-dotenv google-generativeai</code>
+                        </pre>
+                
+                        <h3>Functions</h3>
+                        <p><strong>Google Gemini Function:</strong></p>
+                        <pre>
+                            <code>def get_google_gemini(question, prompt):
+                    model = genai.GenerativeModel('gemini-pro')
+                    response = model.generate_content([prompt[0], question])
+                    return response['content']</code>
+                        </pre>
+                        <p><strong>SQL Query Function:</strong></p>
+                        <pre>
+                            <code>def sql_query(sql, db):
+                    conn = sqlite3.connect(db)
+                    cur = conn.cursor()
+                    cur.execute(sql)
+                    rows = cur.fetchall()
+                    conn.commit()
+                    conn.close()
+                    return rows</code>
+                        </pre>
+                
+                        <h3>Streamlit Application</h3>
+                        <p><strong>Setup Streamlit:</strong></p>
+                        <pre>
+                            <code>st.set_page_config(page_title="Retrieve SQL Query")
+                st.header("Gemini App to Retrieve Data")</code>
+                        </pre>
+                        <p><strong>User Input and Query Execution:</strong></p>
+                        <pre>
+                            <code>question = st.text_input("Input:", key="input")
+                submit = st.button("Ask the Question")
+                
+                if submit:
+                    response = get_google_gemini(question, prompt)
+                    st.subheader("Generated SQL Query")
+                    st.write(response)
+                
+                    try:
+                        data = sql_query(response, "student.db")
+                        st.subheader("The Response Is")
+                        for row in data:
+                            st.write(row)
+                    except Exception as e:
+                        st.error(f"An error occurred: {e}")</code>
+                        </pre>
+                
+                        <h2>Demonstration</h2>
+                        <p>The application allows users to input questions in natural language, such as "How many students are in section Q?" The tool converts the question into an SQL query, executes it on the SQLite database, and displays the results.</p>
+                        <p><strong>Example:</strong></p>
+                        <ul>
+                            <li><strong>Input:</strong> "How many entries of records are present?"</li>
+                            <li><strong>Generated SQL Query:</strong> <code>SELECT COUNT(*) FROM STUDENT;</code></li>
+                            <li><strong>Output:</strong> `10`</li>
+                        </ul>
+                
+                        <h2>Challenges and Solutions</h2>
+                        <h3>Challenges</h3>
+                        <ul>
+                            <li><strong>Handling Incorrect or Ambiguous Inputs:</strong> Ensuring the generated SQL queries are syntactically correct and handling cases where the input question is ambiguous or lacks sufficient detail.</li>
+                            <li><strong>Secure and Efficient Query Execution:</strong> Ensuring the application is secure and prevents SQL injection attacks while optimizing query execution to handle large datasets efficiently.</li>
+                        </ul>
+                
+                        <h3>Solutions</h3>
+                        <ul>
+                            <li><strong>Validation and Error Handling:</strong> Implementing validation checks for the generated SQL queries and providing user feedback and suggestions for improving input questions.</li>
+                            <li><strong>Security Measures:</strong> Using parameterized queries to prevent SQL injection and implementing input sanitization and validation to ensure only valid queries are executed.</li>
+                        </ul>
+                
+                        <h2>Conclusion and Future Work</h2>
+                        <h3>Conclusion</h3>
+                        <p>This project successfully developed a tool that converts natural language questions into SQL queries using Google Gemini and Streamlit. The tool simplifies data retrieval from databases, making it accessible to non-technical users.</p>
+                
+                        <h3>Future Work</h3>
+                        <ul>
+                            <li><strong>Support for More Databases:</strong> Extend support to other databases such as MySQL, PostgreSQL, and MongoDB.</li>
+                            <li><strong>Improved NLP Model:</strong> Enhance the natural language processing model to handle more complex queries and diverse question formats.</li>
+                            <li><strong>User Interface Enhancements:</strong> Improve the user interface to provide a more interactive and intuitive experience.</li>
+                            <li><strong>Additional Functionality:</strong> Enable users to create new databases and tables, allow users to insert data into existing tables, and implement functionality for updating and deleting records.</li>
+                        </ul>
+                
+                        <h2>Target Audience</h2>
+                        <ul>
+                            <li><strong>Non-Technical Users:</strong> Users who need to interact with databases but lack SQL knowledge, including business analysts and managers who require data retrieval for decision-making.</li>
+                            <li><strong>Educational Institutions:</strong> Students and educators can use the tool for learning and teaching SQL.</li>
+                            <li><strong>Small Businesses:</strong> Small business owners who need to manage their data without hiring a dedicated database administrator.</li>
+                            <li><strong>Developers:</strong> Developers who want to quickly prototype and test database queries without writing SQL.</li>
+                        </ul>
+                
+                        <h2>Appendix</h2>
+                        <h3>References</h3>
+                        <ul>
+                            <li>Google Gemini Documentation</li>
+                            <li>Streamlit Documentation</li>
+                            <li>SQLite Documentation</li>
+                        </ul>
+                
+                        <h3>Code Repository</h3>
+                        <p><a href="link-to-github-repo">GitHub Link to the Project</a></p>
+                    </div>
+                
+                    <footer>
+                        <p>&copy; 2024 Shivansh. All Rights Reserved.</p>
+                    </footer>
+                        </div>
+                    </div>
+                </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
      <!-- Skills Section -->
      <section id="skills" class="content-section bg-light" style="display: none;">
         <div class="container">
@@ -484,6 +662,44 @@
         });
     </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const projectsSection = document.getElementById('projects');
+        const skillsSection = document.getElementById('skills');
+        let isProjectsVisible = true;
+
+        function spinTransition() {
+            if (isProjectsVisible) {
+                projectsSection.classList.add('spin-exit');
+                setTimeout(() => {
+                    projectsSection.style.display = 'none';
+                    skillsSection.style.display = 'block';
+                    skillsSection.classList.add('spin-enter');
+                }, 500);
+            } else {
+                skillsSection.classList.add('spin-exit');
+                setTimeout(() => {
+                    skillsSection.style.display = 'none';
+                    projectsSection.style.display = 'block';
+                    projectsSection.classList.add('spin-enter');
+                }, 500);
+            }
+            isProjectsVisible = !isProjectsVisible;
+        }
+
+        document.getElementById('skills-link').addEventListener('click', () => {
+            if (isProjectsVisible) {
+                spinTransition();
+            }
+        });
+
+        document.getElementById('projects-link').addEventListener('click', () => {
+            if (!isProjectsVisible) {
+                spinTransition();
+            }
+        });
+    });
+</script>
 </body>
 </html>
 
